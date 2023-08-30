@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
+import {} from '@mui/material'
 import './App.css';
-
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import SelectData from './component/Selectdata';
+import TextFieldinp from './component/input';
+import Cmbutton from './component/Button';
+import DynamicTabel from './component/DynamicTabel';
 function App() {
+  let renderQ = (e:any)=>{
+    console.log(e)
+  }
+  
+  
+  
+  const columns = [
+    { heading: 'Column 1' },
+    { heading: 'Column 2' },
+    // ...more column definitions
+  ];
+  
+  const rows = [
+    { 'Column 1': 'Value 1', 'Column 2': 'Value 2' },
+    { 'Column 1': 'Value 3', 'Column 2': 'Value 4' },
+    // ...more row data
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+ <>
+<SelectData id='Gender' label='Gender' option={[
+
+  {
+displayname:"Male",
+value:"Male"
+  },
+
+  {
+    displayname:"Fmale",
+    value:"Fmale"
+      },
+]}  getval={renderQ}/>
+
+
+
+<TextFieldinp label='Name' id='UserName' variant={"standard"} />
+
+<Cmbutton  variant={"contained"} color="secondary" text='Send' onclick={()=>{console.log("hello")}}/>
+
+<div>
+            <DynamicTabel row={rows} col={columns} />
+        </div>
+
+ </>
   );
+
+
+
 }
 
 export default App;
